@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 
-let Url = 'www.duryun.xyz:3000/api/v1/'
+let Url = 'www.duryun.xyz/api/v1/'
 
 axios.defaults.baseURL = Url
 

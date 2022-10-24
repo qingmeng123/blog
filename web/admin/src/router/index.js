@@ -4,7 +4,7 @@ const Login = () => import(/* webpackChunkName: "Login" */ '../views/Login.vue')
 const Admin = () => import(/* webpackChunkName: "Admin" */ '../views/Admin.vue')
 
 // 页面路由组件
-const Index = () => import(/* webpackChunkName: "Index" */ '../components/admin')
+const Index = () => import(/* webpackChunkName: "Index" */ '../components/admin/Index.vue')
 const AddArt = () => import(/* webpackChunkName: "AddArt" */ '../components/article/AddArt.vue')
 const ArtList = () => import(/* webpackChunkName: "ArtList" */ '../components/article/ArtList.vue')
 const CateList = () => import(/* webpackChunkName: "CateList" */ '../components/category/CateList.vue')
