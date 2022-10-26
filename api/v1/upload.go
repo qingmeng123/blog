@@ -2,6 +2,7 @@ package v1
 
 import (
 	"duryun-blog/model"
+	"duryun-blog/utils/errmsg"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -20,7 +21,7 @@ func UpLoad(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"status":  200,
-		"message": err,
+		"message": errmsg.GetErrMsg(200),
 		"url":     url,
 	})
 }

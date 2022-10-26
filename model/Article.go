@@ -2,6 +2,7 @@ package model
 
 import (
 	"duryun-blog/utils/errmsg"
+	"fmt"
 	"gorm.io/gorm"
 )
 
@@ -57,10 +58,11 @@ func GetArt(pageSize int, pageNum int) ([]Article, int, int64) {
 	var err error
 	var total int64
 
-	err = db.Select("article.id, title, img, created_at, updated_at, `desc`, comment_count, read_count, category.name").Limit(pageSize).Offset((pageNum - 1) * pageSize).Order("Created_At DESC").Joins("Category").Find(&articleList).Error
+	err = db.Select("article.id, title, img, created_at, updated_at, `desc`, comment_count, read_count, Category.name").Limit(pageSize).Offset((pageNum - 1) * pageSize).Order("Created_At DESC").Joins("Category").Find(&articleList).Error
 	// 单独计数
 	db.Model(&articleList).Count(&total)
 	if err != nil {
+		fmt.Println("err:", err)
 		return nil, errmsg.ERROR, 0
 	}
 	return articleList, errmsg.SUCCSE, total

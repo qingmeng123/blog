@@ -11,9 +11,9 @@ require (
 	github.com/go-playground/universal-translator v0.18.0
 	github.com/go-playground/validator/v10 v10.11.1
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
-	github.com/qiniu/go-sdk/v7 v7.13.0
 	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5
 	github.com/sirupsen/logrus v1.9.0
+	github.com/tencentyun/cos-go-sdk-v5 v0.7.39
 	golang.org/x/crypto v0.0.0-20221012134737-56aed061732a
 	gopkg.in/ini.v1 v1.67.0
 	gorm.io/driver/mysql v1.4.3
@@ -39,10 +39,8 @@ require (
 	github.com/mozillazg/go-httpheader v0.3.1 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/tencentyun/cos-go-sdk-v5 v0.7.39 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2 // indirect
-	golang.org/x/sync v0.0.0-20201207232520-09787c993a3a // indirect
 	golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
