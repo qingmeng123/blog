@@ -34,7 +34,7 @@ const routes = [
     path: '/',
     name: 'admin',
     meta: {
-      title: 'GinBlog 后台管理页面'
+      title: 'duryun-blog 后台管理页面'
     },
     component: Admin,
     children: [
@@ -42,7 +42,7 @@ const routes = [
         path: 'index',
         component: Index,
         meta: {
-          title: 'GinBlog 后台管理页面'
+          title: 'duryun-blog 后台管理页面'
         }
       },
       {

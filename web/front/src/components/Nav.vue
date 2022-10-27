@@ -32,12 +32,12 @@
         <v-list-item-content class="grey--text">{{profileInfo.wechat}}</v-list-item-content>
       </v-list-item>
 
-      <v-list-item>
-        <v-list-item-icon class="ma-3">
-          <v-icon color="orange darken-2">{{'mdi-sina-weibo'}}</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content class="grey--text">{{profileInfo.weibo}}</v-list-item-content>
-      </v-list-item>
+<!--      <v-list-item>-->
+<!--        <v-list-item-icon class="ma-3">-->
+<!--          <v-icon color="orange darken-2">{{'mdi-sina-weibo'}}</v-icon>-->
+<!--        </v-list-item-icon>-->
+<!--        <v-list-item-content class="grey&#45;&#45;text">{{profileInfo.weibo}}</v-list-item-content>-->
+<!--      </v-list-item>-->
 
       <v-list-item>
         <v-list-item-icon class="ma-3">
