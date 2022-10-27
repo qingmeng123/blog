@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar mobileBreakpoint="sm" app dark flat color="indigo darken-2">
+    <v-app-bar mobileBreakpoint="sm" app dark flat color="#417CA9">
       <v-app-bar-nav-icon dark class="hidden-md-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>
         <v-app-bar-nav-icon class="mx-15 hidden-md-and-down">
@@ -47,7 +47,7 @@
 
         <template v-slot:default="dialog">
           <v-card>
-            <v-toolbar color="indigo darken-2" dark>请登录</v-toolbar>
+            <v-toolbar color="#417CA9" dark>请登录</v-toolbar>
             <v-form ref="loginFormRef" v-model="valid">
               <v-card-text class="mt-5">
                 <v-text-field
@@ -82,7 +82,7 @@
         <template v-slot:default="dialog">
           <v-form ref="registerformRef" v-model="registerformvalid">
             <v-card>
-              <v-toolbar color="indigo darken-2" dark>欢迎注册</v-toolbar>
+              <v-toolbar color="#417CA9" dark>欢迎注册</v-toolbar>
               <v-card-text class="mt-5">
                 <v-text-field
                   v-model="formdata.username"
@@ -118,7 +118,7 @@
       </v-dialog>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" color="indigo" dark app temporary>
+    <v-navigation-drawer v-model="drawer" color="#417CA9" dark app temporary>
       <v-list>
         <v-list-item-title>
           <v-btn href="/" dark text>

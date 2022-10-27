@@ -1,7 +1,7 @@
 <template>
-  <v-footer padless color="indigo darken-2">
+  <v-footer padless color="#417CA9">
     <v-row justify="center" no-gutters>
-      <v-col class="py-4 text-center white--text" cols="12">{{ new Date().getFullYear() }} - GinBlog</v-col>
+      <v-col class="py-4 text-center white--text" cols="12">duryun-blog</v-col>
 
       <div class="text-center white--text">
         <a class="text-center white--text" href="https://beian.miit.gov.cn/">{{icp_record}}</a>
