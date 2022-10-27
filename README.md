@@ -396,7 +396,7 @@ $ npm run build
 
 ### 生成镜像
 
-最后一步，就是生成我们的ginblog docker image了，这部很简单，运行下列命令
+最后一步，就是生成我们的duryun-blog docker image了，这部很简单，运行下列命令
 
 ```shell
 $ docker build -t duryun-blog .
