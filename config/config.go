@@ -1,4 +1,4 @@
-package utils
+package config
 
 import (
 	"fmt"
@@ -22,7 +22,7 @@ var (
 	//Bucket     string
 	//QiniuSever string
 	BucketURL string
-	SecretID string
+	SecretID  string
 	SecretKey string
 )
 
@@ -59,7 +59,7 @@ func LoadData(file *ini.File) {
 	QiniuSever = file.Section("qiniu").Key("QiniuSever").String()
 }*/
 
-func LoadCOS(file *ini.File)  {
+func LoadCOS(file *ini.File) {
 	BucketURL = file.Section("cos").Key("BucketURL").String()
 	SecretID = file.Section("cos").Key("SecretID").String()
 	SecretKey = file.Section("cos").Key("SecretKey").String()

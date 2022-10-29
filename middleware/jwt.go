@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"duryun-blog/utils"
+	"duryun-blog/config"
 	"duryun-blog/utils/errmsg"
 	"errors"
 	"github.com/dgrijalva/jwt-go"
@@ -16,7 +16,7 @@ type JWT struct {
 
 func NewJWT() *JWT {
 	return &JWT{
-		[]byte(utils.JwtKey),
+		[]byte(config.JwtKey),
 	}
 }
 

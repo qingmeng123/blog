@@ -2,7 +2,7 @@ package model
 
 import (
 	"context"
-	"duryun-blog/utils"
+	"duryun-blog/config"
 	"fmt"
 	"github.com/tencentyun/cos-go-sdk-v5"
 	"mime/multipart"
@@ -17,10 +17,10 @@ import (
 //var Bucket = utils.Bucket
 //var ImgUrl = utils.QiniuSever
 
-var(
-	BucketURL = utils.BucketURL
-	SecretID=utils.SecretID
-	SecretKey=utils.SecretKey
+var (
+	BucketURL = config.BucketURL
+	SecretID  = config.SecretID
+	SecretKey = config.SecretKey
 )
 
 func UpLoadFile(file multipart.File, fileHeader *multipart.FileHeader) (string, error) {
@@ -29,19 +29,19 @@ func UpLoadFile(file multipart.File, fileHeader *multipart.FileHeader) (string, 
 	client := cos.NewClient(b, &http.Client{
 		Transport: &cos.AuthorizationTransport{
 
-			SecretID: os.Getenv(SecretID),
+			SecretID:  os.Getenv(SecretID),
 			SecretKey: os.Getenv(SecretKey),
 		},
 	})
 
-	key := "test/"+fileHeader.Filename
+	key := "test/" + fileHeader.Filename
 
 	_, err = client.Object.Put(context.Background(), key, file, nil)
-	if err!=nil{
-		return "",err
+	if err != nil {
+		return "", err
 	}
 
-	return fmt.Sprintf("%s",client.Object.GetObjectURL(key)),nil
+	return fmt.Sprintf("%s", client.Object.GetObjectURL(key)), nil
 }
 
 //func UpLoadFile(file multipart.File, fileSize int64) (string, int) {
@@ -85,6 +85,3 @@ func UpLoadFile(file multipart.File, fileHeader *multipart.FileHeader) (string, 
 //		return &storage.ZoneHuadong
 //	}
 //}
-
-
-

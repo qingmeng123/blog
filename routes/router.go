@@ -2,8 +2,8 @@ package routes
 
 import (
 	"duryun-blog/api/v1"
+	"duryun-blog/config"
 	"duryun-blog/middleware"
-	"duryun-blog/utils"
 	"github.com/gin-contrib/multitemplate"
 	"github.com/gin-gonic/gin"
 )
@@ -16,7 +16,7 @@ func createMyRender() multitemplate.Renderer {
 }
 
 func InitRouter() {
-	gin.SetMode(utils.AppMode)
+	gin.SetMode(config.AppMode)
 	r := gin.New()
 	// 设置信任网络 []string
 	// nil 为不计算，避免性能消耗，上线应当设置
@@ -107,6 +107,6 @@ func InitRouter() {
 		router.GET("commentcount/:id", v1.GetCommentCount)
 	}
 
-	_ = r.Run(utils.HttpPort)
+	_ = r.Run(config.HttpPort)
 
 }
