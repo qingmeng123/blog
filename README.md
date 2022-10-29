@@ -25,7 +25,7 @@ https://gitee.com/wejectchan/ginblog?_from=gitee_search
 │          
 ├─api         
 ├─config // 项目配置入口   
-├─database  // 数据库备份文件（初始化）
+├─dao  // 数据库备份文件（初始化）
 ├─log  // 项目日志
 ├─middleware  // 中间件
 ├─model // 数据模型层
