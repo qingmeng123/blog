@@ -21,19 +21,19 @@ type Profile struct {
 // GetProfile 获取个人信息设置
 func GetProfile(id int) (Profile, int) {
 	var profile Profile
-	err = db.Where("ID = ?", id).First(&profile).Error
-	if err != nil {
+	Err = Db.Where("ID = ?", id).First(&profile).Error
+	if Err != nil {
 		return profile, errmsg.ERROR
 	}
-	return profile, errmsg.SUCCSE
+	return profile, errmsg.SUCCESS
 }
 
 // UpdateProfile 更新个人信息设置
 func UpdateProfile(id int, data *Profile) int {
 	var profile Profile
-	err = db.Model(&profile).Where("ID = ?", id).Updates(&data).Error
-	if err != nil {
+	Err = Db.Model(&profile).Where("ID = ?", id).Updates(&data).Error
+	if Err != nil {
 		return errmsg.ERROR
 	}
-	return errmsg.SUCCSE
+	return errmsg.SUCCESS
 }

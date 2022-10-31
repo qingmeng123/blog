@@ -36,9 +36,9 @@ func UpLoadFile(file multipart.File, fileHeader *multipart.FileHeader) (string, 
 
 	key := "test/" + fileHeader.Filename
 
-	_, err = client.Object.Put(context.Background(), key, file, nil)
-	if err != nil {
-		return "", err
+	_, Err = client.Object.Put(context.Background(), key, file, nil)
+	if Err != nil {
+		return "", Err
 	}
 
 	return fmt.Sprintf("%s", client.Object.GetObjectURL(key)), nil
@@ -62,8 +62,8 @@ func UpLoadFile(file multipart.File, fileHeader *multipart.FileHeader) (string, 
 //	formUploader := storage.NewFormUploader(&cfg)
 //	ret := storage.PutRet{}
 //
-//	err := formUploader.PutWithoutKey(context.Background(), &ret, upToken, file, fileSize, &putExtra)
-//	if err != nil {
+//	Err := formUploader.PutWithoutKey(context.Background(), &ret, upToken, file, fileSize, &putExtra)
+//	if Err != nil {
 //		return "", errmsg.ERROR
 //	}
 //	url := ImgUrl + ret.Key

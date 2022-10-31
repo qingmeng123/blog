@@ -2,6 +2,7 @@ package v1
 
 import (
 	"duryun-blog/model"
+	"duryun-blog/service"
 	"duryun-blog/utils/errmsg"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -12,8 +13,8 @@ import (
 func AddArticle(c *gin.Context) {
 	var data model.Article
 	_ = c.ShouldBindJSON(&data)
-
-	code := model.CreateArt(&data)
+	as := service.ArticleService{}
+	code := as.CreateArt(&data)
 
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,

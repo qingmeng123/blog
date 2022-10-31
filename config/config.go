@@ -16,11 +16,6 @@ var (
 	DbPassWord string
 	DbName     string
 
-	//Zone       int
-	//AccessKey  string
-	//SecretKey  string
-	//Bucket     string
-	//QiniuSever string
 	BucketURL string
 	SecretID  string
 	SecretKey string
@@ -32,8 +27,7 @@ func init() {
 		fmt.Println("配置文件读取错误，请检查文件路径:", err)
 	}
 	LoadServer(file)
-	LoadData(file)
-	//LoadQiniu(file)
+	LoadMySQL(file)
 	LoadCOS(file)
 }
 
@@ -43,21 +37,13 @@ func LoadServer(file *ini.File) {
 	JwtKey = file.Section("server").Key("JwtKey").MustString("89js82js72")
 }
 
-func LoadData(file *ini.File) {
+func LoadMySQL(file *ini.File) {
 	DbHost = file.Section("database").Key("DbHost").String()
 	DbPort = file.Section("database").Key("DbPort").String()
 	DbUser = file.Section("database").Key("DbUser").String()
 	DbPassWord = file.Section("database").Key("DbPassWord").String()
 	DbName = file.Section("database").Key("DbName").String()
 }
-
-/*func LoadQiniu(file *ini.File) {
-	Zone = file.Section("qiniu").Key("Zone").MustInt(1)
-	AccessKey = file.Section("qiniu").Key("AccessKey").String()
-	SecretKey = file.Section("qiniu").Key("SecretKey").String()
-	Bucket = file.Section("qiniu").Key("Bucket").String()
-	QiniuSever = file.Section("qiniu").Key("QiniuSever").String()
-}*/
 
 func LoadCOS(file *ini.File) {
 	BucketURL = file.Section("cos").Key("BucketURL").String()
