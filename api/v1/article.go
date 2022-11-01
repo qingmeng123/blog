@@ -40,8 +40,9 @@ func GetCateArt(c *gin.Context) {
 		pageNum = 1
 	}
 
-	data, code, total := model.GetCateArt(id, pageSize, pageNum)
-
+	//data, code, total := model.GetCateArt(id, pageSize, pageNum)
+	as := service.ArticleService{}
+	data, code, total := as.GetCateArt(id, pageSize, pageNum)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"data":    data,
@@ -53,7 +54,9 @@ func GetCateArt(c *gin.Context) {
 // GetArtInfo 查询单个文章信息
 func GetArtInfo(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	data, code := model.GetArtInfo(id)
+	//data, code := model.GetArtInfo(id)
+	as := service.ArticleService{}
+	data, code := as.GetArtInfo(id)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"data":    data,
@@ -61,8 +64,8 @@ func GetArtInfo(c *gin.Context) {
 	})
 }
 
-// GetArt 查询文章列表
-func GetArt(c *gin.Context) {
+// GetArtList 查询文章列表
+func GetArtList(c *gin.Context) {
 	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
 	pageNum, _ := strconv.Atoi(c.Query("pagenum"))
 	title := c.Query("title")
@@ -77,8 +80,11 @@ func GetArt(c *gin.Context) {
 	if pageNum == 0 {
 		pageNum = 1
 	}
+	as := service.ArticleService{}
+
 	if len(title) == 0 {
-		data, code, total := model.GetArt(pageSize, pageNum)
+		//data, code, total := model.GetArtList(pageSize, pageNum)
+		data, code, total := as.GetArtList(pageSize, pageNum)
 		c.JSON(http.StatusOK, gin.H{
 			"status":  code,
 			"data":    data,
@@ -88,7 +94,7 @@ func GetArt(c *gin.Context) {
 		return
 	}
 
-	data, code, total := model.SearchArticle(title, pageSize, pageNum)
+	data, code, total := as.SearchArticle(title, pageSize, pageNum)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"data":    data,
@@ -102,8 +108,8 @@ func EditArt(c *gin.Context) {
 	var data model.Article
 	id, _ := strconv.Atoi(c.Param("id"))
 	_ = c.ShouldBindJSON(&data)
-
-	code := model.EditArt(id, &data)
+	as := service.ArticleService{}
+	code := as.EditArt(id, &data)
 
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
@@ -114,8 +120,8 @@ func EditArt(c *gin.Context) {
 // DeleteArt 删除文章
 func DeleteArt(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-
-	code := model.DeleteArt(id)
+	as := service.ArticleService{}
+	code := as.DeleteArt(id)
 
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,

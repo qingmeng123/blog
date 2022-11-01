@@ -2,6 +2,7 @@ package v1
 
 import (
 	"duryun-blog/model"
+	"duryun-blog/service"
 	"duryun-blog/utils/errmsg"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -12,11 +13,8 @@ import (
 func AddCategory(c *gin.Context) {
 	var data model.Category
 	_ = c.ShouldBindJSON(&data)
-	code := model.CheckCategory(data.Name)
-	if code == errmsg.SUCCESS {
-		model.CreateCate(&data)
-	}
-
+	cs := service.CategoryService{}
+	code := cs.CreateCate(&data)
 	c.JSON(
 		http.StatusOK, gin.H{
 			"status":  code,
@@ -29,8 +27,8 @@ func AddCategory(c *gin.Context) {
 // GetCateInfo 查询分类信息
 func GetCateInfo(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-
-	data, code := model.GetCateInfo(id)
+	cs := service.CategoryService{}
+	data, code := cs.GetCateInfo(id)
 
 	c.JSON(
 		http.StatusOK, gin.H{
@@ -46,7 +44,7 @@ func GetCateInfo(c *gin.Context) {
 func GetCate(c *gin.Context) {
 	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
 	pageNum, _ := strconv.Atoi(c.Query("pagenum"))
-
+	cs := service.CategoryService{}
 	switch {
 	case pageSize >= 100:
 		pageSize = 100
@@ -58,7 +56,7 @@ func GetCate(c *gin.Context) {
 		pageNum = 1
 	}
 
-	data, total := model.GetCate(pageSize, pageNum)
+	data, total := cs.GetCateList(pageSize, pageNum)
 	code := errmsg.SUCCESS
 	c.JSON(
 		http.StatusOK, gin.H{
@@ -70,29 +68,14 @@ func GetCate(c *gin.Context) {
 	)
 }
 
-// 查询单个分类
-//func GetCateInfo(c *gin.Context)  {
-//	id, _ := strconv.Atoi(c.Param("id"))
-//
-//	data,code := model.GetCateInfo(id)
-//
-//	c.JSON(http.StatusOK, gin.H{
-//		"status":  code,
-//		"data":    data,
-//		"message": errmsg.GetErrMsg(code),
-//	})
-//}
-
 // EditCate 编辑分类名
 func EditCate(c *gin.Context) {
 	var data model.Category
 	id, _ := strconv.Atoi(c.Param("id"))
 	_ = c.ShouldBindJSON(&data)
-	code := model.CheckCategory(data.Name)
-	if code == errmsg.SUCCESS {
-		model.EditCate(id, &data)
-	}
-	if code == errmsg.ERROR_CATENAME_USED {
+	cs := service.CategoryService{}
+	code := cs.UpdateCate(id, &data)
+	if code == errmsg.ERROR_CATENAME_EXIST {
 		c.Abort()
 	}
 
@@ -107,8 +90,8 @@ func EditCate(c *gin.Context) {
 // DeleteCate 删除用户
 func DeleteCate(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-
-	code := model.DeleteCate(id)
+	cs := service.CategoryService{}
+	code := cs.DeleteCate(id)
 
 	c.JSON(
 		http.StatusOK, gin.H{

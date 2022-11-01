@@ -19,7 +19,7 @@ func CheckUser(name string) (code int) {
 	var user User
 	Db.Select("id").Where("username = ?", name).First(&user)
 	if user.ID > 0 {
-		return errmsg.ERROR_USERNAME_USED //1001
+		return errmsg.ERROR_USERNAME_EXIST //1001
 	}
 	return errmsg.SUCCESS
 }
@@ -32,7 +32,7 @@ func CheckUpUser(id int, name string) (code int) {
 		return errmsg.SUCCESS
 	}
 	if user.ID > 0 {
-		return errmsg.ERROR_USERNAME_USED //1001
+		return errmsg.ERROR_USERNAME_EXIST //1001
 	}
 	return errmsg.SUCCESS
 }

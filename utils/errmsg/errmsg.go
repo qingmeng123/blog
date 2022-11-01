@@ -3,9 +3,10 @@ package errmsg
 const (
 	SUCCESS = 200
 	ERROR   = 500
+	ERRDAO  = 501 //dao层错误
 
-	// ERROR_USERNAME_USED code= 1000... 用户模块的错误
-	ERROR_USERNAME_USED    = 1001
+	// ERROR_USERNAME_EXIST code= 1000... 用户模块的错误
+	ERROR_USERNAME_EXIST   = 1001
 	ERROR_PASSWORD_WRONG   = 1002
 	ERROR_USER_NOT_EXIST   = 1003
 	ERROR_TOKEN_EXIST      = 1004
@@ -17,14 +18,15 @@ const (
 
 	ERROR_ART_NOT_EXIST = 2001
 	// code= 3000... 分类模块的错误
-	ERROR_CATENAME_USED  = 3001
+	ERROR_CATENAME_EXIST = 3001
 	ERROR_CATE_NOT_EXIST = 3002
 )
 
 var codeMsg = map[int]string{
 	SUCCESS:                "OK",
 	ERROR:                  "FAIL",
-	ERROR_USERNAME_USED:    "用户名已存在！",
+	ERRDAO:                 "数据库错误",
+	ERROR_USERNAME_EXIST:   "用户名已存在！",
 	ERROR_PASSWORD_WRONG:   "密码错误",
 	ERROR_USER_NOT_EXIST:   "用户不存在",
 	ERROR_TOKEN_EXIST:      "TOKEN不存在,请重新登陆",
@@ -35,7 +37,7 @@ var codeMsg = map[int]string{
 
 	ERROR_ART_NOT_EXIST: "文章不存在",
 
-	ERROR_CATENAME_USED:  "该分类已存在",
+	ERROR_CATENAME_EXIST: "该分类已存在",
 	ERROR_CATE_NOT_EXIST: "该分类不存在",
 }
 

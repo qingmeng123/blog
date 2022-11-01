@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"duryun-blog/model"
+	"duryun-blog/service"
 	"duryun-blog/utils/errmsg"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -17,7 +17,7 @@ func UpLoad(c *gin.Context) {
 		return
 	}
 
-	url, err := model.UpLoadFile(file, fileHeader)
+	url, err := service.UpLoadFile(file, fileHeader)
 
 	c.JSON(http.StatusOK, gin.H{
 		"status":  200,

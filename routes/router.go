@@ -58,7 +58,7 @@ func InitRouter() {
 		auth.DELETE("category/:id", v1.DeleteCate)
 		// 文章模块的路由接口
 		auth.GET("admin/article/info/:id", v1.GetArtInfo)
-		auth.GET("admin/article", v1.GetArt)
+		auth.GET("admin/article", v1.GetArtList)
 		auth.POST("article/add", v1.AddArticle)
 		auth.PUT("article/:id", v1.EditArt)
 		auth.DELETE("article/:id", v1.DeleteArt)
@@ -89,7 +89,7 @@ func InitRouter() {
 		router.GET("category/:id", v1.GetCateInfo)
 
 		// 文章模块
-		router.GET("article", v1.GetArt)
+		router.GET("article", v1.GetArtList)
 		router.GET("article/list/:id", v1.GetCateArt)
 		router.GET("article/info/:id", v1.GetArtInfo)
 

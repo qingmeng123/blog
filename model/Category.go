@@ -15,7 +15,7 @@ func CheckCategory(name string) (code int) {
 	var cate Category
 	Db.Select("id").Where("name = ?", name).First(&cate)
 	if cate.ID > 0 {
-		return errmsg.ERROR_CATENAME_USED //2001
+		return errmsg.ERROR_CATENAME_EXIST //2001
 	}
 	return errmsg.SUCCESS
 }

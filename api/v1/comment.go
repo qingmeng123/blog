@@ -2,6 +2,7 @@ package v1
 
 import (
 	"duryun-blog/model"
+	"duryun-blog/service"
 	"duryun-blog/utils/errmsg"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -12,8 +13,8 @@ import (
 func AddComment(c *gin.Context) {
 	var data model.Comment
 	_ = c.ShouldBindJSON(&data)
-
-	code := model.AddComment(&data)
+	cs := service.CommentService{}
+	code := cs.AddComment(&data)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"data":    data,
@@ -24,7 +25,8 @@ func AddComment(c *gin.Context) {
 // GetComment 获取单个评论信息
 func GetComment(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	data, code := model.GetComment(id)
+	cs := service.CommentService{}
+	data, code := cs.GetComment(id)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"data":    data,
@@ -35,7 +37,8 @@ func GetComment(c *gin.Context) {
 // DeleteComment 删除评论
 func DeleteComment(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	code := model.DeleteComment(uint(id))
+	cs := service.CommentService{}
+	code := cs.DeleteComment(uint(id))
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"message": errmsg.GetErrMsg(code),
@@ -45,7 +48,8 @@ func DeleteComment(c *gin.Context) {
 // GetCommentCount 获取评论数量
 func GetCommentCount(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	total := model.GetCommentCount(id)
+	cs := service.CommentService{}
+	total := cs.GetCommentCount(id)
 	c.JSON(http.StatusOK, gin.H{
 		"total": total,
 	})
@@ -55,7 +59,7 @@ func GetCommentCount(c *gin.Context) {
 func GetCommentList(c *gin.Context) {
 	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
 	pageNum, _ := strconv.Atoi(c.Query("pagenum"))
-
+	cs := service.CommentService{}
 	switch {
 	case pageSize >= 100:
 		pageSize = 100
@@ -67,7 +71,7 @@ func GetCommentList(c *gin.Context) {
 		pageNum = 1
 	}
 
-	data, total, code := model.GetCommentList(pageSize, pageNum)
+	data, total, code := cs.GetCommentList(pageSize, pageNum)
 
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
@@ -83,7 +87,7 @@ func GetCommentListFront(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
 	pageNum, _ := strconv.Atoi(c.Query("pagenum"))
-
+	cs := service.CommentService{}
 	switch {
 	case pageSize >= 100:
 		pageSize = 100
@@ -95,7 +99,7 @@ func GetCommentListFront(c *gin.Context) {
 		pageNum = 1
 	}
 
-	data, total, code := model.GetCommentListFront(id, pageSize, pageNum)
+	data, total, code := cs.GetCommentListFront(id, pageSize, pageNum)
 
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
@@ -111,8 +115,8 @@ func CheckComment(c *gin.Context) {
 	var data model.Comment
 	_ = c.ShouldBindJSON(&data)
 	id, _ := strconv.Atoi(c.Param("id"))
-
-	code := model.CheckComment(id, &data)
+	cs := service.CommentService{}
+	code := cs.CheckComment(id, &data)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"message": errmsg.GetErrMsg(code),
@@ -124,8 +128,8 @@ func UncheckComment(c *gin.Context) {
 	var data model.Comment
 	_ = c.ShouldBindJSON(&data)
 	id, _ := strconv.Atoi(c.Param("id"))
-
-	code := model.UncheckComment(id, &data)
+	cs := service.CommentService{}
+	code := cs.UncheckComment(id, &data)
 	c.JSON(http.StatusOK, gin.H{
 		"status":  code,
 		"message": errmsg.GetErrMsg(code),
