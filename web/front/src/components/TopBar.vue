@@ -164,8 +164,8 @@ export default {
       nameRules: [
         (v) => !!v || '用户名不能为空',
         (v) =>
-          (v && v.length >= 4 && v.length <= 12) ||
-          '用户名必须在4到12个字符之间'
+          (v && v.length >= 2 && v.length <= 12) ||
+          '用户名必须在2到12个字符之间'
       ],
       passwordRules: [
         (v) => !!v || '密码不能为空',
