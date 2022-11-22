@@ -42,7 +42,7 @@ func InitDb() {
 	}
 
 	// 迁移数据表，在没有数据表结构变更时候，建议注释不执行
-	_ = Db.AutoMigrate(&User{}, &Article{}, &Category{}, Profile{}, Comment{})
+	//_ = Db.AutoMigrate(&User{}, &Article{}, &Category{}, Profile{}, Comment{})
 
 	sqlDB, _ := Db.DB()
 	// SetMaxIdleCons 设置连接池中的最大闲置连接数。
