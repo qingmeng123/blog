@@ -59,7 +59,7 @@ func setToken(c *gin.Context, user model.User) {
 		StandardClaims: jwt.StandardClaims{
 			NotBefore: time.Now().Unix() - 100,
 			ExpiresAt: time.Now().Unix() + 604800,
-			Issuer:    "GinBlog",
+			Issuer:    "duryunBlog",
 		},
 	}
 
@@ -138,7 +138,6 @@ func GetUsers(c *gin.Context) {
 	pageSize, _ := strconv.Atoi(c.Query("pagesize"))
 	pageNum, _ := strconv.Atoi(c.Query("pagenum"))
 	username := c.Query("username")
-
 	switch {
 	case pageSize >= 100:
 		pageSize = 100

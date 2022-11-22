@@ -75,7 +75,7 @@ func JwtToken() gin.HandlerFunc {
 		var code int
 		tokenHeader := c.Request.Header.Get("Authorization")
 		if tokenHeader == "" {
-			code = errmsg.ERROR_TOKEN_EXIST
+			code = errmsg.ERROR_TOKEN_NOT_EXIST
 			c.JSON(http.StatusOK, gin.H{
 				"status":  code,
 				"message": errmsg.GetErrMsg(code),
@@ -126,7 +126,7 @@ func JwtToken() gin.HandlerFunc {
 			return
 		}
 
-		c.Set("username", claims)
+		c.Set("username", claims.Username)
 		c.Next()
 	}
 }
