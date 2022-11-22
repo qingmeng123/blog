@@ -1,14 +1,14 @@
 package main
 
 import (
+	"duryun-blog/api/v1"
 	"duryun-blog/model"
-	"duryun-blog/routes"
 )
 
 func main() {
 	// 引用数据库
 	model.InitDb()
 	// 引入路由组件
-	routes.InitRouter()
+	v1.InitRouter()
 
 }

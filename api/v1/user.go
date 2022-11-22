@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"duryun-blog/middleware"
+	"duryun-blog/api/middleware"
 	"duryun-blog/model"
 	"duryun-blog/utils/errmsg"
 	"duryun-blog/utils/validator"
