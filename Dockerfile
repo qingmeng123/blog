@@ -12,6 +12,9 @@ RUN echo "https://mirrors.aliyun.com/alpine/v3.4/main/" > /etc/apk/repositories 
     && echo '$TZ' > /etc/timezone
 
 WORKDIR /app
+ADD go.mod .
+ADD go.sum .
+RUN go mod download
 COPY . /app
 
 RUN go build -o duryun-blog ./cmd

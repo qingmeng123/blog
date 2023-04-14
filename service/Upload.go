@@ -29,7 +29,7 @@ func UpLoadFile(file multipart.File, fileHeader *multipart.FileHeader) (string, 
 		},
 	})
 
-	key := "test/" + fileHeader.Filename
+	key := "blog/" + fileHeader.Filename
 
 	_, model.Err = client.Object.Put(context.Background(), key, file, nil)
 	if model.Err != nil {
